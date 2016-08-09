@@ -1,0 +1,5 @@
+Dont Touch The Lava/Temp/
+Dont Touch The Lava/Library/
+*.suo
+*.sln
+*.csproj
