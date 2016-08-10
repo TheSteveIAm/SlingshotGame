@@ -47,7 +47,7 @@ public class TrajectorySimulation : MonoBehaviour
         {
             // Time it takes to traverse one segment of length segScale (careful if velocity is zero)
             float segTime = (segVelocity.sqrMagnitude != 0) ? segmentScale / segVelocity.magnitude : 0;
-
+             
             // Add velocity from gravity for this segment's timestep
             segVelocity = segVelocity + Physics.gravity * segTime;
 

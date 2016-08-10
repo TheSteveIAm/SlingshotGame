@@ -10,12 +10,14 @@ public class Player : MonoBehaviour
     Vector3 startPos, mouseStart;
     Camera cam;
     Rigidbody body;
+    Transform fireLine;
 
     // Use this for initialization
     void Start()
     {
         cam = Camera.main;
         body = GetComponent<Rigidbody>();
+        fireLine = GetComponentInChildren<PlayerFire>().transform;
     }
 
     Vector3 deltaPos;
@@ -29,7 +31,16 @@ public class Player : MonoBehaviour
             deltaPos.y = transform.position.y;
             transform.position = deltaPos;
             deltaPos.y = transform.position.y - 2f;
+            //Vector3 fireDrawLine = startPos - deltaPos;
+            //fireDrawLine.y = 2f;
+            //fireLine.LookAt(fireDrawLine, Vector3.up);
         }
+        //else
+        //{
+        //    deltaPos = transform.position;
+        //    startPos = deltaPos;
+        //    mouseStart = deltaPos;
+        //}
     }
 
     void OnMouseDown()
@@ -51,7 +62,7 @@ public class Player : MonoBehaviour
 
     void Launch()
     {
-        Vector3 shotForce = -deltaPos;
+        Vector3 shotForce = -deltaPos + startPos;
         //shotForce.y = -1000f;
         body.AddForce(shotForce * forceMultiplier, ForceMode.Impulse);
     }
@@ -59,7 +70,7 @@ public class Player : MonoBehaviour
     void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawLine(transform.position, -deltaPos);
+        Gizmos.DrawLine(startPos, deltaPos);
         Gizmos.DrawWireSphere(startPos, 1f);
         Gizmos.DrawWireSphere(deltaPos, 2f);
     }
