@@ -49,7 +49,7 @@ public class TrajectorySimulation : MonoBehaviour
             float segTime = (segVelocity.sqrMagnitude != 0) ? segmentScale / segVelocity.magnitude : 0;
              
             // Add velocity from gravity for this segment's timestep
-            segVelocity = segVelocity + Physics.gravity * segTime;
+            segVelocity = segVelocity/* + Physics.gravity*/ * segTime;
 
             // Check to see if we're going to hit a physics object
             RaycastHit hit;
