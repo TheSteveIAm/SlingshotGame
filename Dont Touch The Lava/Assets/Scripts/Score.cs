@@ -7,6 +7,7 @@ public class Score : MonoBehaviour
 
     public Text scoreText, multiText;
     int score, multi = 1;
+    public SimpleHelvetica text;
 
     void OnEnable()
     {
